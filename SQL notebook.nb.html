@@ -216,20 +216,30 @@ pre code {
 
 <!-- rnb-text-begin -->
 <p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a> Notebook. When you execute code within the notebook, the results appear beneath the code.</p>
-<p>Try executing this chunk by clicking the <em>Run</em> button within the chunk or by placing your cursor inside it and pressing <em>Ctrl+Shift+Enter</em>.</p>
+<p>#SQL select, order, filter</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGxvdChjYXJzKVxuYGBgIn0= -->
-<pre class="r"><code>plot(cars)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgc3FsXG4tLSBTZWxlY3QgdGhlIHRvcCAyMCByb3dzIGZyb20gZGVzY3JpcHRpb24sIG5lcmNfcmVnaW9uIGFuZCBldmVudF9kYXRlXG5TRUxFQ1QgXG4gIFRPUCAoMjApIGRlc2NyaXB0aW9uLFxuICBuZXJjX3JlZ2lvbixcbiAgZXZlbnRfZGF0ZVxuRlJPTSBcbiAgZ3JpZCBcbiAgLS0gT3JkZXIgYnkgbmVyY19yZWdpb24sIGFmZmVjdGVkX2N1c3RvbWVycyAmIGV2ZW50X2RhdGVcbiAgLS0gRXZlbnRfZGF0ZSBzaG91bGQgYmUgaW4gZGVzY2VuZGluZyBvcmRlclxuT1JERVIgQllcbiAgbmVyY19yZWdpb24sXG4gIGFmZmVjdGVkX2N1c3RvbWVycyxcbiAgZXZlbnRfZGF0ZSBERVNDO1xuXG5gYGAifQ== -->
+<pre class="sql"><code>-- Select the top 20 rows from description, nerc_region and event_date
+SELECT 
+  TOP (20) description,
+  nerc_region,
+  event_date
+FROM 
+  grid 
+  -- Order by nerc_region, affected_customers &amp; event_date
+  -- Event_date should be in descending order
+ORDER BY
+  nerc_region,
+  affected_customers,
+  event_date DESC;
+</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Add a new chunk by clicking the <em>Insert Chunk</em> button on the toolbar or by pressing <em>Ctrl+Alt+I</em>.</p>
-<p>When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the <em>Preview</em> button or press <em>Ctrl+Shift+K</em> to preview the HTML file).</p>
-<p>The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike <em>Knit</em>, <em>Preview</em> does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.</p>
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlNRTCBub3RlYm9vayINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KZWRpdG9yX29wdGlvbnM6IA0KICBjaHVua19vdXRwdXRfdHlwZTogaW5saW5lDQotLS0NCg0KVGhpcyBpcyBhbiBbUiBNYXJrZG93bl0oaHR0cDovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbSkgTm90ZWJvb2suIFdoZW4geW91IGV4ZWN1dGUgY29kZSB3aXRoaW4gdGhlIG5vdGVib29rLCB0aGUgcmVzdWx0cyBhcHBlYXIgYmVuZWF0aCB0aGUgY29kZS4gDQoNClRyeSBleGVjdXRpbmcgdGhpcyBjaHVuayBieSBjbGlja2luZyB0aGUgKlJ1biogYnV0dG9uIHdpdGhpbiB0aGUgY2h1bmsgb3IgYnkgcGxhY2luZyB5b3VyIGN1cnNvciBpbnNpZGUgaXQgYW5kIHByZXNzaW5nICpDdHJsK1NoaWZ0K0VudGVyKi4gDQoNCmBgYHtyfQ0KcGxvdChjYXJzKQ0KYGBgDQoNCkFkZCBhIG5ldyBjaHVuayBieSBjbGlja2luZyB0aGUgKkluc2VydCBDaHVuayogYnV0dG9uIG9uIHRoZSB0b29sYmFyIG9yIGJ5IHByZXNzaW5nICpDdHJsK0FsdCtJKi4NCg0KV2hlbiB5b3Ugc2F2ZSB0aGUgbm90ZWJvb2ssIGFuIEhUTUwgZmlsZSBjb250YWluaW5nIHRoZSBjb2RlIGFuZCBvdXRwdXQgd2lsbCBiZSBzYXZlZCBhbG9uZ3NpZGUgaXQgKGNsaWNrIHRoZSAqUHJldmlldyogYnV0dG9uIG9yIHByZXNzICpDdHJsK1NoaWZ0K0sqIHRvIHByZXZpZXcgdGhlIEhUTUwgZmlsZSkuDQoNClRoZSBwcmV2aWV3IHNob3dzIHlvdSBhIHJlbmRlcmVkIEhUTUwgY29weSBvZiB0aGUgY29udGVudHMgb2YgdGhlIGVkaXRvci4gQ29uc2VxdWVudGx5LCB1bmxpa2UgKktuaXQqLCAqUHJldmlldyogZG9lcyBub3QgcnVuIGFueSBSIGNvZGUgY2h1bmtzLiBJbnN0ZWFkLCB0aGUgb3V0cHV0IG9mIHRoZSBjaHVuayB3aGVuIGl0IHdhcyBsYXN0IHJ1biBpbiB0aGUgZWRpdG9yIGlzIGRpc3BsYXllZC4NCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlNRTCBub3RlYm9vayINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KZWRpdG9yX29wdGlvbnM6IA0KICBjaHVua19vdXRwdXRfdHlwZTogaW5saW5lDQotLS0NCg0KVGhpcyBpcyBhbiBbUiBNYXJrZG93bl0oaHR0cDovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbSkgTm90ZWJvb2suIFdoZW4geW91IGV4ZWN1dGUgY29kZSB3aXRoaW4gdGhlIG5vdGVib29rLCB0aGUgcmVzdWx0cyBhcHBlYXIgYmVuZWF0aCB0aGUgY29kZS4gDQoNCiNTUUwgc2VsZWN0LCBvcmRlciwgZmlsdGVyDQoNCmBgYHtzcWwgY29ubmVjdGlvbj19DQotLSBTZWxlY3QgdGhlIHRvcCAyMCByb3dzIGZyb20gZGVzY3JpcHRpb24sIG5lcmNfcmVnaW9uIGFuZCBldmVudF9kYXRlDQpTRUxFQ1QgDQogIFRPUCAoMjApIGRlc2NyaXB0aW9uLA0KICBuZXJjX3JlZ2lvbiwNCiAgZXZlbnRfZGF0ZQ0KRlJPTSANCiAgZ3JpZCANCiAgLS0gT3JkZXIgYnkgbmVyY19yZWdpb24sIGFmZmVjdGVkX2N1c3RvbWVycyAmIGV2ZW50X2RhdGUNCiAgLS0gRXZlbnRfZGF0ZSBzaG91bGQgYmUgaW4gZGVzY2VuZGluZyBvcmRlcg0KT1JERVIgQlkNCiAgbmVyY19yZWdpb24sDQogIGFmZmVjdGVkX2N1c3RvbWVycywNCiAgZXZlbnRfZGF0ZSBERVNDOw0KDQpgYGANCg0K</div>
 
 
 
