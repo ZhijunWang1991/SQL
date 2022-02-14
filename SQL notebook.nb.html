@@ -219,7 +219,7 @@ pre code {
 <p>#SQL select, order, filter</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgc3FsXG4tLSBTZWxlY3QgdGhlIHRvcCAyMCByb3dzIGZyb20gZGVzY3JpcHRpb24sIG5lcmNfcmVnaW9uIGFuZCBldmVudF9kYXRlXG5TRUxFQ1QgXG4gIFRPUCAoMjApIGRlc2NyaXB0aW9uLFxuICBuZXJjX3JlZ2lvbixcbiAgZXZlbnRfZGF0ZVxuRlJPTSBcbiAgZ3JpZCBcbiAgLS0gT3JkZXIgYnkgbmVyY19yZWdpb24sIGFmZmVjdGVkX2N1c3RvbWVycyAmIGV2ZW50X2RhdGVcbiAgLS0gRXZlbnRfZGF0ZSBzaG91bGQgYmUgaW4gZGVzY2VuZGluZyBvcmRlclxuT1JERVIgQllcbiAgbmVyY19yZWdpb24sXG4gIGFmZmVjdGVkX2N1c3RvbWVycyxcbiAgZXZlbnRfZGF0ZSBERVNDO1xuXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgc3FsXG4tLSBTZWxlY3QgdGhlIHRvcCAyMCByb3dzIGZyb20gZGVzY3JpcHRpb24sIG5lcmNfcmVnaW9uIGFuZCBldmVudF9kYXRlXG5TRUxFQ1QgXG4gIFRPUCAoMjApIGRlc2NyaXB0aW9uLFxuICBuZXJjX3JlZ2lvbixcbiAgZXZlbnRfZGF0ZVxuRlJPTSBcbiAgZ3JpZCBcbiAgLS0gT3JkZXIgYnkgbmVyY19yZWdpb24sIGFmZmVjdGVkX2N1c3RvbWVycyAmIGV2ZW50X2RhdGVcbiAgLS0gRXZlbnRfZGF0ZSBzaG91bGQgYmUgaW4gZGVzY2VuZGluZyBvcmRlclxuT1JERVIgQllcbiAgbmVyY19yZWdpb24sXG4gIGFmZmVjdGVkX2N1c3RvbWVycyxcbiAgZXZlbnRfZGF0ZSBERVNDO1xuXG4tLSBTZWxlY3QgbmVyY19yZWdpb24gYW5kIGRlbWFuZF9sb3NzX213XG5TRUxFQ1QgXG4gIG5lcmNfcmVnaW9uLCBcbiAgZGVtYW5kX2xvc3NfbXcgXG5GUk9NIFxuICBncmlkIFxuLS0gUmV0cmlldmUgcm93cyB3aGVyZSBhZmZlY3RlZF9jdXN0b21lcnMgaXMgPj0gNTAwMDAwICAoNTAwLDAwMClcbldIRVJFIFxuICBhZmZlY3RlZF9jdXN0b21lcnMgPj0gNTAwMDAwO1xuYGBgIn0= -->
 <pre class="sql"><code>-- Select the top 20 rows from description, nerc_region and event_date
 SELECT 
   TOP (20) description,
@@ -233,13 +233,48 @@ ORDER BY
   nerc_region,
   affected_customers,
   event_date DESC;
-</code></pre>
+
+-- Select nerc_region and demand_loss_mw
+SELECT 
+  nerc_region, 
+  demand_loss_mw 
+FROM 
+  grid 
+-- Retrieve rows where affected_customers is &gt;= 500000  (500,000)
+WHERE 
+  affected_customers &gt;= 500000;</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgc3FsXG4tLSBTZWxlY3QgZGVzY3JpcHRpb24sIGFmZmVjdGVkX2N1c3RvbWVycyBhbmQgZXZlbnQgZGF0ZVxuU0VMRUNUIFxuICBkZXNjcmlwdGlvbiwgXG4gIGFmZmVjdGVkX2N1c3RvbWVycywgXG4gIGV2ZW50X2RhdGUgXG5GUk9NIFxuICBncmlkIFxuICAtLSBUaGUgYWZmZWN0ZWRfY3VzdG9tZXJzIGNvbHVtbiBzaG91bGQgYmUgPj0gNTAwMDAgYW5kIDw9MTUwMDAwIFxuV0hFUkUgXG4gIGFmZmVjdGVkX2N1c3RvbWVycyBCRVRXRUVOIDUwMDAwIFxuICBBTkQgMTUwMDAwIFxuICAtLSBEZWZpbmUgdGhlIG9yZGVyICAgXG5PUkRFUiBCWSBcbiAgZXZlbnRfZGF0ZSBERVNDO1xuXG5gYGAifQ== -->
+<pre class="sql"><code>-- Select description, affected_customers and event date
+SELECT 
+  description, 
+  affected_customers, 
+  event_date 
+FROM 
+  grid 
+  -- The affected_customers column should be &gt;= 50000 and &lt;=150000 
+WHERE 
+  affected_customers BETWEEN 50000 
+  AND 150000 
+  -- Define the order   
+ORDER BY 
+  event_date DESC;
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>##WHERE the wild things are</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlNRTCBub3RlYm9vayINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KZWRpdG9yX29wdGlvbnM6IA0KICBjaHVua19vdXRwdXRfdHlwZTogaW5saW5lDQotLS0NCg0KVGhpcyBpcyBhbiBbUiBNYXJrZG93bl0oaHR0cDovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbSkgTm90ZWJvb2suIFdoZW4geW91IGV4ZWN1dGUgY29kZSB3aXRoaW4gdGhlIG5vdGVib29rLCB0aGUgcmVzdWx0cyBhcHBlYXIgYmVuZWF0aCB0aGUgY29kZS4gDQoNCiNTUUwgc2VsZWN0LCBvcmRlciwgZmlsdGVyDQoNCmBgYHtzcWwgY29ubmVjdGlvbj19DQotLSBTZWxlY3QgdGhlIHRvcCAyMCByb3dzIGZyb20gZGVzY3JpcHRpb24sIG5lcmNfcmVnaW9uIGFuZCBldmVudF9kYXRlDQpTRUxFQ1QgDQogIFRPUCAoMjApIGRlc2NyaXB0aW9uLA0KICBuZXJjX3JlZ2lvbiwNCiAgZXZlbnRfZGF0ZQ0KRlJPTSANCiAgZ3JpZCANCiAgLS0gT3JkZXIgYnkgbmVyY19yZWdpb24sIGFmZmVjdGVkX2N1c3RvbWVycyAmIGV2ZW50X2RhdGUNCiAgLS0gRXZlbnRfZGF0ZSBzaG91bGQgYmUgaW4gZGVzY2VuZGluZyBvcmRlcg0KT1JERVIgQlkNCiAgbmVyY19yZWdpb24sDQogIGFmZmVjdGVkX2N1c3RvbWVycywNCiAgZXZlbnRfZGF0ZSBERVNDOw0KDQpgYGANCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlNRTCBub3RlYm9vayINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KZWRpdG9yX29wdGlvbnM6IA0KICBjaHVua19vdXRwdXRfdHlwZTogaW5saW5lDQotLS0NCg0KVGhpcyBpcyBhbiBbUiBNYXJrZG93bl0oaHR0cDovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbSkgTm90ZWJvb2suIFdoZW4geW91IGV4ZWN1dGUgY29kZSB3aXRoaW4gdGhlIG5vdGVib29rLCB0aGUgcmVzdWx0cyBhcHBlYXIgYmVuZWF0aCB0aGUgY29kZS4gDQoNCiNTUUwgc2VsZWN0LCBvcmRlciwgZmlsdGVyDQoNCmBgYHtzcWwgY29ubmVjdGlvbj19DQotLSBTZWxlY3QgdGhlIHRvcCAyMCByb3dzIGZyb20gZGVzY3JpcHRpb24sIG5lcmNfcmVnaW9uIGFuZCBldmVudF9kYXRlDQpTRUxFQ1QgDQogIFRPUCAoMjApIGRlc2NyaXB0aW9uLA0KICBuZXJjX3JlZ2lvbiwNCiAgZXZlbnRfZGF0ZQ0KRlJPTSANCiAgZ3JpZCANCiAgLS0gT3JkZXIgYnkgbmVyY19yZWdpb24sIGFmZmVjdGVkX2N1c3RvbWVycyAmIGV2ZW50X2RhdGUNCiAgLS0gRXZlbnRfZGF0ZSBzaG91bGQgYmUgaW4gZGVzY2VuZGluZyBvcmRlcg0KT1JERVIgQlkNCiAgbmVyY19yZWdpb24sDQogIGFmZmVjdGVkX2N1c3RvbWVycywNCiAgZXZlbnRfZGF0ZSBERVNDOw0KDQotLSBTZWxlY3QgbmVyY19yZWdpb24gYW5kIGRlbWFuZF9sb3NzX213DQpTRUxFQ1QgDQogIG5lcmNfcmVnaW9uLCANCiAgZGVtYW5kX2xvc3NfbXcgDQpGUk9NIA0KICBncmlkIA0KLS0gUmV0cmlldmUgcm93cyB3aGVyZSBhZmZlY3RlZF9jdXN0b21lcnMgaXMgPj0gNTAwMDAwICAoNTAwLDAwMCkNCldIRVJFIA0KICBhZmZlY3RlZF9jdXN0b21lcnMgPj0gNTAwMDAwOw0KYGBgDQoNCmBgYHtzcWwgY29ubmVjdGlvbj19DQotLSBTZWxlY3QgZGVzY3JpcHRpb24sIGFmZmVjdGVkX2N1c3RvbWVycyBhbmQgZXZlbnQgZGF0ZQ0KU0VMRUNUIA0KICBkZXNjcmlwdGlvbiwgDQogIGFmZmVjdGVkX2N1c3RvbWVycywgDQogIGV2ZW50X2RhdGUgDQpGUk9NIA0KICBncmlkIA0KICAtLSBUaGUgYWZmZWN0ZWRfY3VzdG9tZXJzIGNvbHVtbiBzaG91bGQgYmUgPj0gNTAwMDAgYW5kIDw9MTUwMDAwIA0KV0hFUkUgDQogIGFmZmVjdGVkX2N1c3RvbWVycyBCRVRXRUVOIDUwMDAwIA0KICBBTkQgMTUwMDAwIA0KICAtLSBEZWZpbmUgdGhlIG9yZGVyICAgDQpPUkRFUiBCWSANCiAgZXZlbnRfZGF0ZSBERVNDOw0KDQpgYGANCg0KIyNXSEVSRSB0aGUgd2lsZCB0aGluZ3MgYXJlDQpgYGB7c3FsIGNvbm5lY3Rpb249fQ0KDQoNCmBgYA0KDQo=</div>
 
 
 
